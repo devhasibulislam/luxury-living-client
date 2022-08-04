@@ -47,7 +47,7 @@ const Footer = () => {
             </div>
             {/* about us */}
             <div>
-              <h2 className="text-xl font-bold mb-2">Quick Links</h2>
+              <h2 className="text-xl font-bold mb-2">About us</h2>
               <div>
                 <p className="mb-4">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus
