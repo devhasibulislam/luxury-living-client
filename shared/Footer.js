@@ -4,9 +4,9 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <section className="bg-[#251D58] text-white">
+    <section className="bg-[#251D58] text-white py-12 ">
       <div className="container mx-auto">
-        <div className="py-12 lg:px-0 md:px-0 px-4">
+        <div className="lg:px-0 md:px-0 px-4">
           <div className="grid lg:grid-cols-4 lg:gap-0 md:grid-cols-2 md:gap-y-8 grid-cols-1 gap-y-8">
             {/* company location */}
             <div className="flex flex-row gap-x-2">
