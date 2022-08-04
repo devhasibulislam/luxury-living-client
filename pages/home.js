@@ -1,4 +1,10 @@
+import Banner from "../components/Banner";
+
 const Home = () => {
-  return <section>Home route</section>;
+  return (
+    <section>
+      <Banner />
+    </section>
+  );
 };
 export default Home;
