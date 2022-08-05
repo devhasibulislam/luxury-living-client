@@ -2,8 +2,8 @@ import Image from "next/image";
 
 const Banner = () => {
   return (
-    <section>
-      <div className="hero bg-base-200 py-12">
+    <section className="bg-base-200 py-12">
+      <div className="hero">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <Image
             src="/assets/banner.svg"
