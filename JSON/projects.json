@@ -1,15 +1,18 @@
 [
   {
+    "_id": 1,
     "thumbnail": "/assets/projects/gorgeous-house.svg",
     "title": "Villa on Washington Avenue",
     "location": "Dhaka, Bangladesh"
   },
   {
+    "_id": 2,
     "thumbnail": "/assets/projects/rego-park.svg",
     "title": "Luxury villa in Rego Park",
     "location": "Rajshahi, Bangladesh"
   },
   {
+    "_id": 3,
     "thumbnail": "/assets/projects/washington-avenue.svg",
     "title": "Gorgeous house",
     "location": "Sylhet, Bangladesh"
