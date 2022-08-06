@@ -1,0 +1,23 @@
+[
+    {
+        "_id": 1,
+        "thumbnail": "/assets/services/interior.svg",
+        "title": "Office interior design",
+        "description": "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.",
+        "price": 299
+    },
+    {
+        "_id": 2,
+        "thumbnail": "/assets/services/showroom.svg",
+        "title": "Showroom design",
+        "description": "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.",
+        "price": 399
+    },
+    {
+        "_id": 3,
+        "thumbnail": "/assets/services/residential.svg",
+        "title": "Residential/Home",
+        "description": "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.",
+        "price": 499
+    }
+]
