@@ -21,7 +21,7 @@ const Banner = () => {
               excepturi exercitationem quasi. In deleniti eaque aut repudiandae
               et a id nisi.
             </p>
-            <button className="btn bg-[#251D58] capitalize px-6 btn-sm rounded">
+            <button className="btn bg-[#251D58] capitalize px-12 rounded">
               Booking
             </button>
           </div>
