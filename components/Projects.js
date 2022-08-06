@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import SectionHeader from "./SectionHeader";
-
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 
@@ -21,7 +20,7 @@ const Projects = () => {
         title={"Discover the latest Interior Design available today"}
       />
       <div className="container mx-auto">
-        <div className="py-8">
+        <div className="py-8 lg:px-0 px-4">
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
             {projects.map((project) => (
               <div key={project._id}>
