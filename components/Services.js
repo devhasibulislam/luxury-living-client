@@ -10,7 +10,7 @@ const Services = () => {
       .then((data) => setServices(data));
   }, []);
   return (
-    <section className="my-12" id="services">
+    <section className="my-12 py-8" id="services">
       <SectionHeader
         name={"Services"}
         title={
@@ -41,7 +41,7 @@ const Services = () => {
               .reverse()}
           </div>
         </div>
-        <div className="text-center mt-8">
+        <div className="text-center mt-4">
           <button className="btn rounded px-12 bg-[#251D58]">
             Explore more
           </button>
