@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Banner = () => {
   return (
-    <section className="bg-base-200 py-12">
+    <section className="bg-base-200 py-12" id="home">
       <div className="hero">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <Image
