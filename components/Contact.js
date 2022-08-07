@@ -3,7 +3,7 @@ import { inner_field } from "../styles/contact.module.css";
 
 const Contact = () => {
   return (
-    <section className="my-12">
+    <section className="my-12" id="contact">
       <SectionHeader
         name={"Contact"}
         title={"Let us handle your project, professionally."}
