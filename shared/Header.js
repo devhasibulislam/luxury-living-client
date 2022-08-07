@@ -4,12 +4,12 @@ import Link from "next/link";
 const Header = () => {
   const navMenu = (
     <>
-      <Link href="/home">Home</Link>
-      <Link href="/about">About us</Link>
+      <Link href="#home">Home</Link>
       <Link href="#projects">Projects</Link>
       <Link href="#services">Services</Link>
       <Link href="/dashboard/admin">Admin</Link>
       <Link href="/dashboard/customer">Customer</Link>
+      <Link href="#contact">Contact us</Link>
     </>
   );
   return (
