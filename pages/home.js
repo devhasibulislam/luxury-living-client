@@ -1,6 +1,7 @@
 import Banner from "../components/Banner";
 import Projects from "../components/Projects";
 import Services from "../components/Services";
+import Testimonials from "../components/Testimonials";
 
 const Home = () => {
   return (
@@ -8,6 +9,7 @@ const Home = () => {
       <Banner />
       <Projects />
       <Services />
+      <Testimonials />
     </section>
   );
 };
