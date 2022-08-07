@@ -21,6 +21,7 @@ const Services = () => {
         <div className="py-8">
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:gap-x-4 gap-4 lg:px-0 px-4">
             {services
+              .slice(services.length - 3, services.length)
               .map((service) => (
                 <div
                   key={service._id}
@@ -41,7 +42,9 @@ const Services = () => {
           </div>
         </div>
         <div className="text-center mt-8">
-          <button className="btn rounded px-12 bg-[#251D58]">Explore more</button>
+          <button className="btn rounded px-12 bg-[#251D58]">
+            Explore more
+          </button>
         </div>
       </div>
     </section>

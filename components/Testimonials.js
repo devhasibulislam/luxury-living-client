@@ -35,6 +35,7 @@ const Testimonials = () => {
         </div>
         <Carousel responsive={responsive}>
           {testimonials
+            .slice(testimonials.length - 3, testimonials.length)
             .map((testimonial) => (
               <div
                 className="bg-white p-8 rounded-lg shadow hover:shadow-lg duration-500 transition-shadow mx-4"
