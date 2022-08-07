@@ -2,6 +2,7 @@
   {
     "_id": 1,
     "name": "Nash Patrik",
+    "avatar": "/assets/testimonials/nash.svg",
     "designation": "CEO, Manpol",
     "comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi dolore sunt a mollitia, molestias, magnam illo quisquam dolor quia iste culpa rem quaerat neque. Mollitia repellat incidunt officia perferendis provident?",
     "rating": 5
@@ -9,6 +10,7 @@
   {
     "_id": 2,
     "name": "Miriam Barron",
+    "avatar": "/assets/testimonials/miriam.svg",
     "designation": "CTO, Manpol",
     "comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi dolore sunt a mollitia, molestias, magnam illo quisquam dolor quia iste culpa rem quaerat neque. Mollitia repellat incidunt officia perferendis provident?",
     "rating": 3
@@ -16,6 +18,7 @@
   {
     "_id": 3,
     "name": "Bria Malone",
+    "avatar": "/assets/testimonials/bria.svg",
     "designation": "COO, Manpol",
     "comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi dolore sunt a mollitia, molestias, magnam illo quisquam dolor quia iste culpa rem quaerat neque. Mollitia repellat incidunt officia perferendis provident?",
     "rating": 4
