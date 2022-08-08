@@ -1,7 +1,35 @@
 import SectionHeader from "./SectionHeader";
 import { inner_field } from "../styles/contact.module.css";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
+  const handleSentMessage = (event) => {
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    } else {
+      event.preventDefault();
+
+      emailjs
+        .sendForm(
+          "service_dozo57k",
+          "template_cn03kep",
+          event.target,
+          "zVtSQ7zi_vZn2K-mv"
+        )
+        .then(
+          (result) => {
+            console.log(result.text);
+            event.target.reset();
+          },
+          (error) => {
+            console.log(error.text);
+          }
+        );
+    }
+  };
+
   return (
     <section className="my-12" id="contact">
       <SectionHeader
@@ -10,7 +38,7 @@ const Contact = () => {
       />
       <div className="lg:w-1/2 md:w-3/4 w-full lg:px-0 md:px-0 px-4 mx-auto">
         <div className="mt-16">
-          <form className="grid gap-y-4">
+          <form className="grid gap-y-4" onSubmit={handleSentMessage}>
             <div className="grid lg:grid-cols-2 lg:gap-x-4 grid-cols-1  lg:gap-y-0 gap-y-4">
               <input
                 className={`${inner_field} w-full h-[60px] rounded-md px-4`}
