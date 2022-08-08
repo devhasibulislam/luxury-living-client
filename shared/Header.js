@@ -1,7 +1,16 @@
+import { signOut } from "firebase/auth";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import Login from "../components/Login";
+import Modal from "../components/Modal";
+import auth from "../config/firebase";
 
 const Header = () => {
+  const [user] = useAuthState(auth);
+  const [showModalLogin, setShowModalLogin] = useState(false);
+
   const navMenu = (
     <>
       <Link href="#home">Home</Link>
@@ -12,6 +21,7 @@ const Header = () => {
       <Link href="#contact">Contact us</Link>
     </>
   );
+
   return (
     <section className="bg-base-200">
       <div className="container mx-auto">
@@ -56,12 +66,38 @@ const Header = () => {
             </ul>
           </div>
           <div className="navbar-end">
-            <a className="btn btn-sm rounded px-6 capitalize bg-[#251D58]">
-              Login
+            <a
+              className="btn btn-sm rounded px-6 capitalize bg-[#251D58]"
+            >
+              {user ? (
+                <span
+                  onClick={() => {
+                    signOut(auth);
+                    setShowModalLogin(false);
+                  }}
+                >
+                  Logout
+                </span>
+              ) : (
+                <span onClick={() => setShowModalLogin(true)}>Login</span>
+              )}
             </a>
           </div>
         </div>
       </div>
+      {showModalLogin && (
+        <Modal
+          showModal={showModalLogin}
+          setShowModal={setShowModalLogin}
+          title={"Sign in"}
+          content={
+            <Login
+              showModalLogin={showModalLogin}
+              setShowModalLogin={setShowModalLogin}
+            />
+          }
+        />
+      )}
     </section>
   );
 };
