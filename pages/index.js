@@ -30,3 +30,5 @@ const Index = () => {
   );
 };
 export default Index;
+
+// meta data reference: https://www.adhesion.co.nz/blog/how-to-change-website-thumbnail-in-facebook-post
