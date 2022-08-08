@@ -31,4 +31,5 @@ const Index = () => {
 };
 export default Index;
 
-// meta data reference: https://www.adhesion.co.nz/blog/how-to-change-website-thumbnail-in-facebook-post
+// meta data reference1: https://www.adhesion.co.nz/blog/how-to-change-website-thumbnail-in-facebook-post
+// meta data reference2: https://medium.com/wesionary-team/customize-social-media-preview-of-your-nextjs-website-links-82f6bce035b
