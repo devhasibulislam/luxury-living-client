@@ -48,7 +48,7 @@ const Header = () => {
                 tabIndex="0"
                 className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded w-52"
               >
-                <div className="flex flex-col gap-x-4">{navMenu}</div>
+                <div className="flex flex-col gap-4">{navMenu}</div>
               </ul>
             </div>
             <Link href="/">
@@ -66,9 +66,7 @@ const Header = () => {
             </ul>
           </div>
           <div className="navbar-end">
-            <a
-              className="btn btn-sm rounded px-6 capitalize bg-[#251D58]"
-            >
+            <a className="btn btn-sm rounded px-6 capitalize bg-[#251D58]">
               {user ? (
                 <span
                   onClick={() => {
