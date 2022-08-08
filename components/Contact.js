@@ -46,6 +46,7 @@ const Contact = () => {
                 name="firstName"
                 id="firstName"
                 placeholder="First name"
+                required
               />
               <input
                 className={`${inner_field} w-full h-[60px] rounded-md px-4`}
@@ -53,6 +54,7 @@ const Contact = () => {
                 name="lastName"
                 id="lastName"
                 placeholder="Last name"
+                required
               />
             </div>
             <div className="grid lg:grid-cols-2 lg:gap-x-4 grid-cols-1 lg:gap-y-0 gap-y-4">
@@ -62,6 +64,7 @@ const Contact = () => {
                 name="email"
                 id="email"
                 placeholder="Email address"
+                required
               />
               <input
                 className={`${inner_field} w-full h-[60px] rounded-md px-4`}
@@ -69,6 +72,7 @@ const Contact = () => {
                 name="phone"
                 id="phone"
                 placeholder="Phone number"
+                required
               />
             </div>
             <textarea
@@ -76,6 +80,7 @@ const Contact = () => {
               name="message"
               id="message"
               placeholder="Write your message"
+              required
             />
             <div className="text-center mt-8">
               <button type="submit" className="btn rounded px-12 bg-[#251D58]">
