@@ -4,10 +4,22 @@ import Projects from "../components/Projects";
 import Services from "../components/Services";
 import Testimonials from "../components/Testimonials";
 import { Toaster } from "react-hot-toast";
+import Head from "next/head";
 
 const Index = () => {
   return (
     <section>
+      <Head>
+        <title>Luxury Living</title>
+        <meta
+          property="og:url"
+          content="https://llc-luxury-living-client.vercel.app/"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Luxury Living" />
+        <meta property="og:description" content="Reinvent your luxury" />
+        <meta property="og:image" content="/luxury_living.png" />
+      </Head>
       <Banner />
       <Projects />
       <Services />
