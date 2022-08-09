@@ -18,7 +18,6 @@ const Header = () => {
       <ActiveLink href="/#projects">Projects</ActiveLink>
       <ActiveLink href="/#services">Services</ActiveLink>
       <ActiveLink href="/dashboard/admin">Admin</ActiveLink>
-      {/* <Link href="/dashboard/customer">Customer</Link> */}
       <ActiveLink href={"/dashboard/customer"}>Customer</ActiveLink>
       <ActiveLink href="/#contact">Contact us</ActiveLink>
     </>
