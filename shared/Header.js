@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import ActiveLink from "../components/ActiveLink";
 import Login from "../components/Login";
 import Modal from "../components/Modal";
 import auth from "../config/firebase";
@@ -13,12 +14,13 @@ const Header = () => {
 
   const navMenu = (
     <>
-      <Link href="#home">Home</Link>
-      <Link href="#projects">Projects</Link>
-      <Link href="#services">Services</Link>
-      <Link href="/dashboard/admin">Admin</Link>
-      <Link href="/dashboard/customer">Customer</Link>
-      <Link href="#contact">Contact us</Link>
+      <ActiveLink href="/#home">Home</ActiveLink>
+      <ActiveLink href="/#projects">Projects</ActiveLink>
+      <ActiveLink href="/#services">Services</ActiveLink>
+      <ActiveLink href="/dashboard/admin">Admin</ActiveLink>
+      {/* <Link href="/dashboard/customer">Customer</Link> */}
+      <ActiveLink href={"/dashboard/customer"}>Customer</ActiveLink>
+      <ActiveLink href="/#contact">Contact us</ActiveLink>
     </>
   );
 
