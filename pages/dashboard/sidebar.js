@@ -147,7 +147,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <section>
+    <section className="">
       <div className="flex flex-col gap-y-4">
         {navItems.map((navItem, index) => (
           <div key={index} className="w-fit p-1 hover:text-green-600 duration-500 transition-colors">
