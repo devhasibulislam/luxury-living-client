@@ -21,7 +21,7 @@ const BookingList = () => {
         <title>Booking List - Luxury Living</title>
       </Head>
       <Layout>
-        <section className="w-3/4">
+        <section className="lg:w-3/4 md:w-3/4 w-full">
           <Mockup>
             <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
               {services.map((service) => (
