@@ -22,7 +22,7 @@ const ManageServices = () => {
         <title>Manage Services - Luxury Living</title>
       </Head>
       <Layout>
-        <section className="w-3/4">
+        <section className="lg:w-3/4 md:w-3/4 w-full">
           <Mockup>
             <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
               {services.map((service) => (
@@ -125,7 +125,9 @@ const ManageServices = () => {
                   />
                 </div>
                 <div>
-                  <span className="font-medium mb-2 block">Enter new price</span>
+                  <span className="font-medium mb-2 block">
+                    Enter new price
+                  </span>
                   <input
                     type="number"
                     name="price"
