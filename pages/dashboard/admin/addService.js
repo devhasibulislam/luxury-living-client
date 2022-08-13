@@ -12,7 +12,7 @@ const AddService = () => {
         <title>Add Service - Luxury Living</title>
       </Head>
       <Layout>
-        <section className="lg:w-1/2 md:w-3/4 w-full">
+        <section className="w-full">
           <Mockup>
             <form>
               <div className="grid grid-cols-1 gap-y-4 lg:min-w-[500px] md:min-w-[450px]">
