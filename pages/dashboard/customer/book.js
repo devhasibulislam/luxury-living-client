@@ -6,7 +6,7 @@ import styles from "../../../styles/customer/book.module.css";
 
 const Booking = () => {
   return (
-    <section className="lg:w-1/2 md:w-3/4 w-full">
+    <section className="w-full">
       <Head>
         <title>Booking - Luxury Living</title>
       </Head>
