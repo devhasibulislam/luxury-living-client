@@ -7,7 +7,7 @@ const OrderList = () => {
       <Head>
         <title>Order List - Luxury Living</title>
       </Head>
-      <section className="lg:w-3/4 md:w-3/4 w-full">
+      <section className="w-full">
         <Mockup>
           <div className="overflow-x-auto shadow rounded-md">
             <table className="table w-full">
@@ -29,7 +29,7 @@ const OrderList = () => {
                   <td>Office Interior Design</td>
                   <td>Paypal</td>
                   <td>
-                    <select className="select select-sm w-full max-w-xs shadow">
+                    <select className="select select-sm max-w-xs shadow w-[105px]">
                       <option disabled selected>
                         Done
                       </option>
@@ -46,7 +46,7 @@ const OrderList = () => {
                   <td>Office Interior Design</td>
                   <td>Creadit Card</td>
                   <td>
-                    <select className="select select-sm w-full max-w-xs shadow">
+                    <select className="select select-sm max-w-xs shadow w-[105px]">
                       <option disabled selected>
                         Ongoing
                       </option>
@@ -63,7 +63,7 @@ const OrderList = () => {
                   <td>Office Interior Design</td>
                   <td>Creadit Card</td>
                   <td>
-                    <select className="select select-sm w-full max-w-xs shadow">
+                    <select className="select select-sm max-w-xs shadow w-[105px]">
                       <option disabled selected>
                         Pending
                       </option>
@@ -80,7 +80,7 @@ const OrderList = () => {
                   <td>Office Interior Design</td>
                   <td>Paypal</td>
                   <td>
-                    <select className="select select-sm w-full max-w-xs shadow">
+                    <select className="select select-sm max-w-xs shadow w-[105px]">
                       <option disabled selected>
                         Pending
                       </option>
@@ -97,7 +97,7 @@ const OrderList = () => {
                   <td>Office Interior Design</td>
                   <td>Creadit Card</td>
                   <td>
-                    <select className="select select-sm w-full max-w-xs shadow">
+                    <select className="select select-sm max-w-xs shadow w-[105px]">
                       <option disabled selected>
                         Ongoing
                       </option>
