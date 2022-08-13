@@ -11,7 +11,7 @@ const MakeAdmin = () => {
         <title>Make Admin - Luxury Living</title>
       </Head>
       <Layout>
-        <section className="lg:w-1/2 md:w-3/4 w-full">
+        <section className="w-full">
           <Mockup>
             <section>
               <form>
