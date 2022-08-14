@@ -7,18 +7,29 @@ import ActiveLink from "../components/ActiveLink";
 import Login from "../components/Login";
 import Modal from "../components/Modal";
 import auth from "../config/firebase";
+import Role from "../hooks/getUserRole";
 
 const Header = () => {
   const [user] = useAuthState(auth);
   const [showModalLogin, setShowModalLogin] = useState(false);
+
+  const role = Role(user);
 
   const navMenu = (
     <>
       <ActiveLink href="/#home">Home</ActiveLink>
       <ActiveLink href="/#projects">Projects</ActiveLink>
       <ActiveLink href="/#services">Services</ActiveLink>
-      <ActiveLink href="/dashboard/admin">Admin</ActiveLink>
-      <ActiveLink href={"/dashboard/customer"}>Customer</ActiveLink>
+      {user && (
+        <>
+          {role === "admin" && (
+            <ActiveLink href="/dashboard/admin">Admin</ActiveLink>
+          )}
+          {role === "customer" && (
+            <ActiveLink href={"/dashboard/customer"}>Customer</ActiveLink>
+          )}
+        </>
+      )}
       <ActiveLink href="/#contact">Contact us</ActiveLink>
     </>
   );
