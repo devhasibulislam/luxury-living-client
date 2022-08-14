@@ -1,8 +1,11 @@
 import Link from "next/link";
 import React from "react";
 import ReactTooltip from "react-tooltip";
+import Role from "../../hooks/getUserRole";
 
 const Sidebar = () => {
+  const role = Role();
+
   const navItems = [
     {
       href: "/dashboard/customer",
@@ -150,13 +153,26 @@ const Sidebar = () => {
     <section className="">
       <div className="flex flex-col gap-y-4">
         {navItems.map((navItem, index) => (
-          <div key={index} className="w-fit p-1 hover:text-green-600 duration-500 transition-colors">
-            <Link href={navItem.href}>
-              <a data-tip={navItem.name}>
-                {navItem.icon}
-                <ReactTooltip place="right" type="dark" effect="solid" />
-              </a>
-            </Link>
+          <div
+            key={index}
+            className="w-fit p-1 hover:text-green-600 duration-500 transition-colors"
+          >
+            {(role === "admin" && index >= 3) && (
+              <Link href={navItem.href}>
+                <a data-tip={navItem.name}>
+                  {navItem.icon}
+                  <ReactTooltip place="right" type="dark" effect="solid" />
+                </a>
+              </Link>
+            )}
+            {(role === "customer" && index <= 2) && (
+              <Link href={navItem.href}>
+                <a data-tip={navItem.name}>
+                  {navItem.icon}
+                  <ReactTooltip place="right" type="dark" effect="solid" />
+                </a>
+              </Link>
+            )}
           </div>
         ))}
       </div>
