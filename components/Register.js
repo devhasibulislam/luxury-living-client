@@ -1,27 +1,57 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useUpdateProfile } from "react-firebase-hooks/auth";
+import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import auth from "../config/firebase";
 import Login from "./Login";
 import Modal from "./Modal";
 import toast from "react-hot-toast";
+import axios from "axios";
+import Image from "next/image";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const Register = ({ showModalRegistration, setShowModalRegistration }) => {
   const [createUserWithEmailAndPassword] =
     useCreateUserWithEmailAndPassword(auth);
   const [updateProfile] = useUpdateProfile(auth);
   const [showModalLogin, setShowModalLogin] = useState(false);
+  const [signInWithGoogle] = useSignInWithGoogle(auth);
+  const [user] = useAuthState(auth);
   const login = "Sign in";
+
+  useEffect(() => {
+    if (user?.displayName && user?.email) {
+      const { data } = axios.post("http://localhost:5000/user/", {
+        name: user?.displayName,
+        email: user?.email,
+        password: "encrypted",
+        role: "customer",
+      });
+
+      console.log(data);
+    }
+  }, [user]);
 
   const handleRegister = async (event) => {
     event.preventDefault();
 
-    await createUserWithEmailAndPassword(
-      event.target.email.value,
-      event.target.password.value
-    );
+    const name = event.target.name.value;
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+
+    await createUserWithEmailAndPassword(email, password);
     await updateProfile({ displayName: event.target.name.value });
     toast.success("Registration successful.");
+
+    const { data } = await axios.post("http://localhost:5000/user/", {
+      name,
+      email,
+      password,
+      role: "customer",
+    });
+
+    console.log(data);
+
     setTimeout(() => {
       setShowModalRegistration(false);
     }, 2000);
@@ -72,6 +102,19 @@ const Register = ({ showModalRegistration, setShowModalRegistration }) => {
                 <button className="btn btn-sm rounded px-6 capitalize bg-[#251D58]">
                   Sign Up
                 </button>
+                <div
+                  className="flex items-center justify-between border rounded-full w-full mt-8"
+                  onClick={() => signInWithGoogle()}
+                >
+                  <Image
+                    src="/assets/google.svg"
+                    alt="google sign in logo"
+                    height={31}
+                    width={31}
+                  />
+                  <span className="font-semibold">Sign in with Google</span>
+                  <span></span>
+                </div>
               </form>
             </div>
           </div>
