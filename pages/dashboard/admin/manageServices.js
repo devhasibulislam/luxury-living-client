@@ -32,6 +32,15 @@ const ManageServices = () => {
 
   if (!services) return <p>Loading...</p>;
 
+  const handleDeleteService = async (id) => {
+    const { data } = await axios.delete(
+      `http://localhost:5000/admin/servicing/${id}`
+    );
+    if (data?.acknowledged) {
+      toast.success(`Deleted item ${id}`);
+    }
+  };
+
   return (
     <section>
       <Head>
@@ -82,7 +91,10 @@ const ManageServices = () => {
                           />
                         </svg>
                       </label>
-                      <span className="shadow-md hover:shadow-lg duration-500 hover:text-red-500 cursor-pointer block w-fit rounded-full p-2 bg-red-50 text-red-900">
+                      <span
+                        className="shadow-md hover:shadow-lg duration-500 hover:text-red-500 cursor-pointer block w-fit rounded-full p-2 bg-red-50 text-red-900"
+                        onClick={() => handleDeleteService(service._id)}
+                      >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           className="h-6 w-6"
@@ -125,7 +137,7 @@ const ManageServices = () => {
                 You are able to change only service price!
               </h3>
               <p className="py-4 flex flex-col gap-y-4">
-                <div>
+                {/* <div>
                   <label
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                     htmlFor="file_input"
@@ -145,7 +157,7 @@ const ManageServices = () => {
                     id="file_input"
                     type="file"
                   />
-                </div>
+                </div> */}
                 <div>
                   <span className="font-medium mb-2 block">
                     Enter new price
