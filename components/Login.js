@@ -76,7 +76,10 @@ const Login = ({ showModalLogin, setShowModalLogin }) => {
                 </button>
                 <div
                   className="flex items-center justify-between border rounded-full w-full mt-8"
-                  onClick={() => signInWithGoogle()}
+                  onClick={() => {
+                    signInWithGoogle();
+                    setShowModalLogin(false);
+                  }}
                 >
                   <Image
                     src="/assets/google.svg"
