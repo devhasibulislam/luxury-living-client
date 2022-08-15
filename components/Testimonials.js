@@ -1,16 +1,15 @@
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import useSWR from "swr";
 
 const Testimonials = () => {
-  const [testimonials, setTestimonials] = useState([]);
-
-  useEffect(() => {
-    fetch("/api/testimonials")
-      .then((res) => res.json())
-      .then((data) => setTestimonials(data));
-  }, []);
+  const fetcher = (...args) => fetch(...args).then((res) => res.json());
+  const { data: testimonials } = useSWR(
+    "http://localhost:5000/customer/review",
+    fetcher,
+    { revalidateOnFocus: true }
+  );
 
   const responsive = {
     desktop: {
@@ -27,6 +26,8 @@ const Testimonials = () => {
     },
   };
 
+  if (!testimonials) return <p>Loading...</p>;
+
   return (
     <section className="bg-base-200 py-28">
       <div className="container mx-auto">
@@ -35,8 +36,8 @@ const Testimonials = () => {
         </div>
         <Carousel responsive={responsive}>
           {testimonials
-            .slice(testimonials.length - 3, testimonials.length)
-            .map((testimonial) => (
+            ?.slice(testimonials?.length - 3, testimonials?.length)
+            ?.map((testimonial) => (
               <div
                 className="bg-white p-8 rounded-lg shadow hover:shadow-lg duration-500 transition-shadow mx-4"
                 key={testimonial._id}
@@ -45,12 +46,9 @@ const Testimonials = () => {
                   <article>
                     <div className="flex items-center gap-x-4">
                       <div>
-                        <Image
-                          src={testimonial.avatar}
-                          alt="user-nash"
-                          height={64}
-                          width={64}
-                        />
+                        <span className="h-[64px] w-[64px] p-2 shadow rounded-full text-lg">
+                          {testimonial.avatar}
+                        </span>
                       </div>
                       <div>
                         <h3 className="font-bold text-xl">
@@ -61,18 +59,22 @@ const Testimonials = () => {
                         </h5>
                       </div>
                     </div>
-                    <p className="text-gray-400 mt-4">{testimonial.comment}</p>
+                    <p className="text-gray-400 mt-4">
+                      {testimonial.description}
+                    </p>
                   </article>
                   <div className="flex gap-x-1">
-                    {[...Array(testimonial.rating).keys()].map((ratings) => (
-                      <Image
-                        key={ratings}
-                        src="/assets/star.svg"
-                        alt="user ratings"
-                        height={22}
-                        width={22}
-                      />
-                    ))}
+                    {[...Array(parseInt(testimonial.rating)).keys()]?.map(
+                      (ratings) => (
+                        <Image
+                          key={ratings}
+                          src="/assets/star.svg"
+                          alt="user ratings"
+                          height={22}
+                          width={22}
+                        />
+                      )
+                    )}
                   </div>
                 </div>
               </div>
