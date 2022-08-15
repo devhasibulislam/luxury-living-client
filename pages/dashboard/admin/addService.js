@@ -1,11 +1,63 @@
 import Head from "next/head";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../../../components/Layout";
 import Mockup from "../../../components/Mockup";
 import styles from "../../../styles/customer/book.module.css";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const AddService = () => {
+  const [avatar, setAvatar] = useState("");
+
+  const fileOnChange = (event) => {
+    // setImage(event.target.files[0]);
+
+    let formData = new FormData();
+
+    formData.append("avatar", event.target.files[0]);
+    fetch("http://localhost:5000/admin/service", {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data.avatar);
+        setAvatar(data.avatar);
+      });
+  };
+
+  const handleAddService = async (event) => {
+    event.preventDefault();
+
+    const name = event.target.name.value;
+    const description = event.target.description.value;
+
+    // let formData = new FormData();
+
+    // formData.append("avatar", image);
+    // fetch("http://localhost:5000/admin/service", {
+    //   method: "POST",
+    //   body: formData,
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log(data?.path);
+    //     setPath(data?.path);
+    //   });
+
+    const service = { name, description, avatar, price: 499 };
+    // console.log(service);
+    const { data } = await axios.post(
+      "http://localhost:5000/admin/servicing",
+      service
+    );
+    if (data?.acknowledged) {
+      toast.success("New service added.");
+      event.target.reset();
+    }
+  };
+
   return (
     <section>
       <Head>
@@ -14,7 +66,7 @@ const AddService = () => {
       <Layout>
         <section className="w-full">
           <Mockup>
-            <form>
+            <form onSubmit={handleAddService}>
               <div className="grid grid-cols-1 gap-y-4 lg:min-w-[500px] md:min-w-[450px]">
                 <div>
                   <input
@@ -22,7 +74,7 @@ const AddService = () => {
                     type="text"
                     name="name"
                     id="name"
-                    placeholder="Your Name"
+                    placeholder="Enter service name"
                   />
                 </div>
                 <div>
@@ -52,6 +104,7 @@ const AddService = () => {
                     className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 p-2 rounded shadow"
                     id="file_input"
                     type="file"
+                    onChange={fileOnChange}
                   />
                 </div>
               </div>
