@@ -1,4 +1,5 @@
 import Sidebar from "../pages/dashboard/sidebar";
+import { Toaster } from "react-hot-toast";
 
 const Layout = ({ children }) => {
   return (
@@ -9,6 +10,7 @@ const Layout = ({ children }) => {
       <section className="container mx-auto">
         <div className="lg:mt-12 md:m-12 m-4">{children}</div>
       </section>
+      <Toaster />
     </section>
   );
 };
