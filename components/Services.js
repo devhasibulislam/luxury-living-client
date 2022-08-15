@@ -21,8 +21,8 @@ const Services = () => {
         <div className="py-8">
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:gap-x-4 gap-4 lg:px-0 px-4">
             {services
-              .slice(services.length - 3, services.length)
-              .map((service) => (
+              .slice(services?.length - 3, services?.length)
+              ?.map((service) => (
                 <div
                   key={service._id}
                   className="text-center p-16 rounded-xl hover:shadow-2xl hover:bg-white transition-all duration-500"
