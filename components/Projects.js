@@ -22,7 +22,7 @@ const Projects = () => {
       <div className="container mx-auto">
         <div className="py-8 lg:px-0 px-4">
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
-            {projects.map((project) => (
+            {projects?.map((project) => (
               <div key={project._id}>
                 <div className="card card-compact bg-base-100 shadow-xl">
                   <figure>
