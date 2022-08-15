@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Layout from "../../../components/Layout";
 import Mockup from "../../../components/Mockup";
-import Image from "next/image";
 import Head from "next/head";
 import useSWR from "swr";
 import axios from "axios";
