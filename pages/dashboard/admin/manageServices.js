@@ -1,20 +1,36 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Layout from "../../../components/Layout";
 import Mockup from "../../../components/Mockup";
 import Image from "next/image";
 import Head from "next/head";
+import useSWR from "swr";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const ManageServices = () => {
   const [modal, setModal] = useState(false);
-  const [services, setServices] = useState([]);
-  useEffect(() => {
-    const getServces = async () => {
-      const request = await fetch("/api/services");
-      const response = await request.json();
-      setServices(response);
-    };
-    getServces();
-  }, []);
+  const [newPrice, setNewPrice] = useState(0);
+  const [serviceID, setServiceID] = useState("");
+
+  const handlePriceUpdate = async () => {
+    const { data } = await axios.put(
+      `http://localhost:5000/admin/servicing/${serviceID}`,
+      { price: newPrice }
+    );
+
+    if (data?.acknowledged) {
+      toast.success(`Price updated to $${newPrice}`);
+    }
+  };
+
+  const fetcher = (...args) => fetch(...args).then((res) => res.json());
+  const { data: services } = useSWR(
+    "http://localhost:5000/admin/servicing",
+    fetcher,
+    { refreshInterval: 1000 }
+  );
+
+  if (!services) return <p>Loading...</p>;
 
   return (
     <section>
@@ -25,25 +41,31 @@ const ManageServices = () => {
         <section className="w-full">
           <Mockup>
             <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
-              {services.map((service) => (
+              {services?.map((service) => (
                 <div
                   key={service._id}
                   className="bg-white p-4 rounded-lg shadow flex flex-col gap-y-2"
                 >
                   <div className="grid grid-cols-2">
                     <span>
-                      <Image
-                        src={service.thumbnail}
-                        alt={service.title}
-                        height={60}
-                        width={60}
-                      />
+                      <picture>
+                        <img
+                          src={`http://localhost:5000/${service.avatar}`}
+                          alt={service.name}
+                          className="w-[100px] h-[100px] object-cover rounded-full shadow-xl"
+                          style={{ maxWidth: "100%" }}
+                        />
+                      </picture>
                     </span>
                     <span className="flex justify-end items-start gap-x-4">
                       <label
                         htmlFor="update-modal"
                         className="shadow-md hover:shadow-lg duration-500 hover:text-green-500 cursor-pointer block w-fit rounded-full p-2 bg-green-50 text-green-900"
-                        onClick={() => setModal(true)}
+                        onClick={() => {
+                          setModal(true);
+                          setServiceID(service._id);
+                          setNewPrice(service.price);
+                        }}
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -78,11 +100,11 @@ const ManageServices = () => {
                       </span>
                     </span>
                   </div>
-                  <h3 className="font-bold text-xl">{service.title}</h3>
+                  <h3 className="font-bold text-xl">{service.name}</h3>
                   <p className="text-justify text-gray-500">
                     {service.description}
                   </p>
-                  <h3 className="text-2xl font-bold">
+                  <h3 className="text-2xl font-bold mt-auto">
                     $
                     <span className="text-base font-medium text-red-500">
                       {service.price}
@@ -132,8 +154,9 @@ const ManageServices = () => {
                     type="number"
                     name="price"
                     id="price"
-                    placeholder="Enter new price"
+                    placeholder={`i.e. ${newPrice}`}
                     className="shadow w-full p-4"
+                    onChange={(e) => setNewPrice(e.target.value)}
                   />
                 </div>
               </p>
@@ -147,6 +170,7 @@ const ManageServices = () => {
                 <label
                   htmlFor="update-modal"
                   className="btn btn-sm rounded bg-green-500 border-0 capitalize"
+                  onClick={handlePriceUpdate}
                 >
                   Okay
                 </label>
