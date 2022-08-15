@@ -38,7 +38,7 @@ const Review = () => {
     };
 
     const { data } = await axios.post(
-      "http://localhost:5000/customer/review",
+      "https://ll-luxury-living.herokuapp.com/customer/review",
       reviewer
     );
 

@@ -8,7 +8,7 @@ import useSWR from "swr";
 const BookingList = () => {
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data: services } = useSWR(
-    "http://localhost:5000/customer/booking",
+    "https://ll-luxury-living.herokuapp.com/customer/booking",
     fetcher,
     { revalidateOnFocus: true }
   );

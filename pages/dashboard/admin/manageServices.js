@@ -13,7 +13,7 @@ const ManageServices = () => {
 
   const handlePriceUpdate = async () => {
     const { data } = await axios.put(
-      `http://localhost:5000/admin/servicing/${serviceID}`,
+      `https://ll-luxury-living.herokuapp.com/admin/servicing/${serviceID}`,
       { price: newPrice }
     );
 
@@ -24,7 +24,7 @@ const ManageServices = () => {
 
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data: services } = useSWR(
-    "http://localhost:5000/admin/servicing",
+    "https://ll-luxury-living.herokuapp.com/admin/servicing",
     fetcher,
     { refreshInterval: 1000 }
   );
@@ -33,7 +33,7 @@ const ManageServices = () => {
 
   const handleDeleteService = async (id) => {
     const { data } = await axios.delete(
-      `http://localhost:5000/admin/servicing/${id}`
+      `https://ll-luxury-living.herokuapp.com/admin/servicing/${id}`
     );
     if (data?.acknowledged) {
       toast.success(`Deleted item ${id}`);
@@ -58,7 +58,7 @@ const ManageServices = () => {
                     <span>
                       <picture>
                         <img
-                          src={`http://localhost:5000/${service.avatar}`}
+                          src={`https://ll-luxury-living.herokuapp.com/${service.avatar}`}
                           alt={service.name}
                           className="w-[100px] h-[100px] object-cover rounded-full shadow-xl"
                           style={{ maxWidth: "100%" }}

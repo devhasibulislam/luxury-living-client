@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["http://localhost:5000/"],
+    domains: ["https://ll-luxury-living.herokuapp.com/"],
   },
 };
 

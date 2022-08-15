@@ -16,7 +16,7 @@ const AddService = () => {
     let formData = new FormData();
 
     formData.append("avatar", event.target.files[0]);
-    fetch("http://localhost:5000/admin/service", {
+    fetch("https://ll-luxury-living.herokuapp.com/admin/service", {
       method: "POST",
       body: formData,
     })
@@ -36,7 +36,7 @@ const AddService = () => {
     // let formData = new FormData();
 
     // formData.append("avatar", image);
-    // fetch("http://localhost:5000/admin/service", {
+    // fetch("https://ll-luxury-living.herokuapp.com/admin/service", {
     //   method: "POST",
     //   body: formData,
     // })
@@ -49,7 +49,7 @@ const AddService = () => {
     const service = { name, description, avatar, price: 499 };
     // console.log(service);
     const { data } = await axios.post(
-      "http://localhost:5000/admin/servicing",
+      "https://ll-luxury-living.herokuapp.com/admin/servicing",
       service
     );
     if (data?.acknowledged) {

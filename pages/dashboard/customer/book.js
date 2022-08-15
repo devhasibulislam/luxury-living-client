@@ -30,7 +30,7 @@ const Booking = () => {
       state: "Pending"
     };
 
-    const { data } = await axios.post("http://localhost:5000/customer/booking", booking);
+    const { data } = await axios.post("https://ll-luxury-living.herokuapp.com/customer/booking", booking);
     
     if(data?.acknowledged){
       toast.success("Your booking is on pending, please, wait for a while!");
