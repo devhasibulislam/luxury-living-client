@@ -14,7 +14,7 @@ const Review = () => {
 
   useEffect(() => {
     setDisable(localStorage.getItem(`${user?.displayName}-review`) === "true");
-  }, []);
+  }, [user?.displayName]);
 
   const handleReview = async (event) => {
     event.preventDefault();
@@ -34,7 +34,7 @@ const Review = () => {
       designation,
       description,
       avatar,
-      rating
+      rating,
     };
 
     const { data } = await axios.post(
