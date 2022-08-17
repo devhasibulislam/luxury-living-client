@@ -13,7 +13,7 @@ const Header = () => {
   const [user] = useAuthState(auth);
   const [showModalLogin, setShowModalLogin] = useState(false);
 
-  const role = Role(user);
+  const role = Role();
 
   // if (!role) return <p>Loading...</p>;
 

@@ -6,6 +6,8 @@ import Role from "../../hooks/getUserRole";
 const Sidebar = () => {
   const role = Role();
 
+  // if (!role) return <p>Loading...</p>;
+
   const navItems = [
     {
       href: "/dashboard/customer",
