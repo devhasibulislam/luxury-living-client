@@ -1,11 +1,10 @@
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import SectionHeader from "./SectionHeader";
 
 const Services = () => {
   const [services, setServices] = useState([]);
   useEffect(() => {
-    fetch("/api/services")
+    fetch("https://ll-luxury-living.herokuapp.com/admin/servicing")
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);
@@ -27,13 +26,15 @@ const Services = () => {
                   key={service._id}
                   className="text-center p-16 rounded-xl hover:shadow-2xl hover:bg-white transition-all duration-500"
                 >
-                  <Image
-                    src={service.thumbnail}
-                    alt={service._id}
-                    height={77.5}
-                    width={77.5}
-                  />
-                  <h2 className="font-bold text-lg">{service.title}</h2>
+                  <picture>
+                    <img
+                      src={`https://ll-luxury-living.herokuapp.com/${service.avatar}`}
+                      alt={service.name}
+                      className="w-[100px] h-[100px] object-cover rounded-full shadow-xl mx-auto mb-4 "
+                      style={{ maxWidth: "100%" }}
+                    />
+                  </picture>
+                  <h2 className="font-bold text-lg">{service.name}</h2>
                   <h3 className="font-bold text-[#291956]">${service.price}</h3>
                   <p className="text-gray-500">{service.description}</p>
                 </div>
@@ -41,11 +42,11 @@ const Services = () => {
               .reverse()}
           </div>
         </div>
-        <div className="text-center mt-4">
+        {/* <div className="text-center mt-4">
           <button className="btn rounded px-12 bg-[#251D58]">
             Explore more
           </button>
-        </div>
+        </div> */}
       </div>
     </section>
   );
