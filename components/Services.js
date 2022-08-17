@@ -5,6 +5,7 @@ const Services = () => {
   const [services, setServices] = useState([]);
   useEffect(() => {
     fetch("https://ll-luxury-living.herokuapp.com/admin/servicing")
+    
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);
