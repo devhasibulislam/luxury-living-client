@@ -11,6 +11,8 @@ const Testimonials = () => {
     { revalidateOnFocus: true }
   );
 
+  if (!testimonials) return <p>Loading...</p>;
+
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
