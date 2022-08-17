@@ -15,6 +15,8 @@ const Header = () => {
 
   const role = Role(user);
 
+  if (!role) return <p>Loading...</p>;
+
   const navMenu = (
     <>
       <ActiveLink href="/#home">Home</ActiveLink>
