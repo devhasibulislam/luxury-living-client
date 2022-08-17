@@ -1,18 +1,38 @@
 import axios from "axios";
 import Head from "next/head";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import Mockup from "../../../components/Mockup";
 import styles from "../../../styles/customer/book.module.css";
 import toast from "react-hot-toast";
+import auth from "../../../config/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import useSWR from "swr";
 
 const Booking = () => {
-  const handleBooking = async(event) => {
+  const [user] = useAuthState(auth);
+  const [visible, setVisible] = useState(false);
+  const [svcs, setSVCS] = useState(null);
+
+  const fetcher = (...args) => fetch(...args).then((res) => res.json());
+  const { data: services } = useSWR(
+    "https://ll-luxury-living.herokuapp.com/admin/servicing",
+    fetcher,
+    {
+      revalidateOnFocus: true,
+    }
+  );
+
+  if (!services) return <p>Loading...</p>;
+
+  const handleBooking = async (event) => {
     event.preventDefault();
 
     const name = event.target.name.value;
     const email = event.target.email.value;
-    const service = event.target.service.value;
+    const service = svcs.name;
+    const description = svcs.description;
+    const avatar = svcs.avatar;
     const paypal = event.target.payment.value;
     const credit = event.target.payment.value;
     const card_number = event.target.cNumber.value;
@@ -23,16 +43,21 @@ const Booking = () => {
       name,
       email,
       service,
+      description,
+      avatar,
       payment_method: paypal || credit,
       card_number,
       year,
       cvc,
-      state: "Pending"
+      status: "Pending",
     };
 
-    const { data } = await axios.post("https://ll-luxury-living.herokuapp.com/customer/booking", booking);
-    
-    if(data?.acknowledged){
+    const { data } = await axios.post(
+      "https://ll-luxury-living.herokuapp.com/customer/booking",
+      booking
+    );
+
+    if (data?.acknowledged) {
       toast.success("Your booking is on pending, please, wait for a while!");
       event.target.reset();
     }
@@ -51,7 +76,8 @@ const Booking = () => {
                 type="text"
                 name="name"
                 id="name"
-                placeholder="Your Name"
+                value={user?.displayName}
+                readOnly
               />
             </div>
             <div>
@@ -60,7 +86,8 @@ const Booking = () => {
                 type="email"
                 name="email"
                 id="email"
-                placeholder="Your Email"
+                value={user?.email}
+                readOnly
               />
             </div>
             <div>
@@ -69,15 +96,36 @@ const Booking = () => {
                 type="text"
                 name="service"
                 id="service"
-                placeholder="Your Service"
+                placeholder="Enter service"
+                value={svcs?.name}
+                onClick={() => setVisible(true)}
+                onChange={(event) => setSVCS(event.target.value)}
               />
+              {visible && (
+                <div className="flex flex-col gap-y-2 h-[88px] z-10 overflow-auto mt-4">
+                  {services.map((service) => (
+                    <p
+                      key={service._id}
+                      className="bg-white p-2 rounded w-full"
+                      onClick={() => setSVCS(service)}
+                    >
+                      {service.name}
+                    </p>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
           <div className="mt-8">
             <h4 className="font-bold">Pay with</h4>
             <div className="flex lg:items-center md:items-center lg:gap-x-4 md:gap-x-4 gap-y-4 my-4 lg:flex-row md:flex-row flex-col">
               <span className="flex items-center gap-x-1">
-                <input type="radio" name="payment" id="credit" value="Credit Card" />
+                <input
+                  type="radio"
+                  name="payment"
+                  id="credit"
+                  value="Credit Card"
+                />
                 <Image
                   src="/assets/payments/creadit.svg"
                   alt="creadit card"
