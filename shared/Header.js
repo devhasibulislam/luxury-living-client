@@ -15,7 +15,7 @@ const Header = () => {
 
   const role = Role(user);
 
-  if (!role) return <p>Loading...</p>;
+  // if (!role) return <p>Loading...</p>;
 
   const navMenu = (
     <>
