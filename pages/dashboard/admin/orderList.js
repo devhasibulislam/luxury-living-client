@@ -13,13 +13,15 @@ const OrderList = () => {
     { revalidateOnFocus: true }
   );
 
+  if (!booking) return <p>Loading...</p>;
+
   const handleStatus = async (id, status) => {
     const { data } = await axios.put("https://ll-luxury-living.herokuapp.com/customer/booking", {
       id,
       status,
     });
-    
-    if(data?.acknowledged){
+
+    if (data?.acknowledged) {
       toast.success("Status updated!");
     }
   };
