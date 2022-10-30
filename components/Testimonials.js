@@ -6,7 +6,7 @@ import useSWR from "swr";
 const Testimonials = () => {
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data: testimonials } = useSWR(
-    "https://luxury-living-ll-server.onrender.com/customer/review",
+    "https://ll-luxury-living.herokuapp.com/customer/review",
     fetcher,
     { revalidateOnFocus: true }
   );

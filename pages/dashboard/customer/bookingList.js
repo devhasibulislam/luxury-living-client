@@ -7,7 +7,7 @@ import useSWR from "swr";
 const BookingList = () => {
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data: services } = useSWR(
-    "https://luxury-living-ll-server.onrender.com/customer/booking",
+    "https://ll-luxury-living.herokuapp.com/customer/booking",
     fetcher,
     { revalidateOnFocus: true }
   );
@@ -32,7 +32,7 @@ const BookingList = () => {
                     <span>
                       <picture>
                         <img
-                          src={`https://luxury-living-ll-server.onrender.com/${service.avatar}`}
+                          src={`https://ll-luxury-living.herokuapp.com/${service.avatar}`}
                           alt={service.name}
                           className="w-[70px] h-[70px] object-cover rounded-full shadow-xl"
                           style={{ maxWidth: "100%" }}

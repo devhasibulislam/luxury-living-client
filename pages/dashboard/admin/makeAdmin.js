@@ -12,7 +12,7 @@ const MakeAdmin = () => {
   const [email, setEmail] = useState(null);
 
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
-  const { data: users } = useSWR("https://luxury-living-ll-server.onrender.com/user", fetcher, {
+  const { data: users } = useSWR("https://ll-luxury-living.herokuapp.com/user", fetcher, {
     revalidateOnFocus: true,
   });
 
@@ -23,7 +23,7 @@ const MakeAdmin = () => {
 
     const email = event.target.email.value;
 
-    const { data } = await axios.put(`https://luxury-living-ll-server.onrender.com/user/${email}`, {
+    const { data } = await axios.put(`https://ll-luxury-living.herokuapp.com/user/${email}`, {
       email: email,
     });
 

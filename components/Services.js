@@ -4,7 +4,7 @@ import SectionHeader from "./SectionHeader";
 const Services = () => {
   const [services, setServices] = useState([]);
   useEffect(() => {
-    fetch("https://luxury-living-ll-server.onrender.com/admin/servicing")
+    fetch("https://ll-luxury-living.herokuapp.com/admin/servicing")
     
       .then((res) => res.json())
       .then((data) => setServices(data));
@@ -29,7 +29,7 @@ const Services = () => {
                 >
                   <picture>
                     <img
-                      src={`https://luxury-living-ll-server.onrender.com/${service.avatar}`}
+                      src={`https://ll-luxury-living.herokuapp.com/${service.avatar}`}
                       alt={service.name}
                       className="w-[100px] h-[100px] object-cover rounded-full shadow-xl mx-auto mb-4 "
                       style={{ maxWidth: "100%" }}

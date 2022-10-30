@@ -21,7 +21,7 @@ const Register = ({ showModalRegistration, setShowModalRegistration }) => {
 
   useEffect(() => {
     if (user?.displayName && user?.email) {
-      const { data } = axios.post("https://luxury-living-ll-server.onrender.com/user/", {
+      const { data } = axios.post("https://ll-luxury-living.herokuapp.com/user/", {
         name: user?.displayName,
         email: user?.email,
         password: "encrypted",
@@ -43,7 +43,7 @@ const Register = ({ showModalRegistration, setShowModalRegistration }) => {
     await updateProfile({ displayName: event.target.name.value });
     toast.success("Registration successful.");
 
-    const { data } = await axios.post("https://luxury-living-ll-server.onrender.com/user/", {
+    const { data } = await axios.post("https://ll-luxury-living.herokuapp.com/user/", {
       name,
       email,
       password,
