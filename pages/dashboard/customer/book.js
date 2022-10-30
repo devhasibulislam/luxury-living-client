@@ -16,7 +16,7 @@ const Booking = () => {
 
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data: services } = useSWR(
-    "https://ll-luxury-living.herokuapp.com/admin/servicing",
+    "https://luxury-living-ll-server.onrender.com/admin/servicing",
     fetcher,
     {
       revalidateOnFocus: true,
@@ -53,7 +53,7 @@ const Booking = () => {
     };
 
     const { data } = await axios.post(
-      "https://ll-luxury-living.herokuapp.com/customer/booking",
+      "https://luxury-living-ll-server.onrender.com/customer/booking",
       booking
     );
 

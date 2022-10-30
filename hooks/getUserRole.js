@@ -9,7 +9,7 @@ const Role = () => {
   useEffect(() => {
     const getRole = async () => {
       const request = await fetch(
-        `https://ll-luxury-living.herokuapp.com/user/${user?.displayName}`
+        `https://luxury-living-ll-server.onrender.com/user/${user?.displayName}`
       );
       const response = await request.json();
       setEndUser(response);

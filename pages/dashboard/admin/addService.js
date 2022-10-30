@@ -16,7 +16,7 @@ const AddService = () => {
     let formData = new FormData();
 
     formData.append("avatar", event.target.files[0]);
-    fetch("https://ll-luxury-living.herokuapp.com/admin/service", {
+    fetch("https://luxury-living-ll-server.onrender.com/admin/service", {
       method: "POST",
       body: formData,
     })
@@ -36,7 +36,7 @@ const AddService = () => {
     // let formData = new FormData();
 
     // formData.append("avatar", image);
-    // fetch("https://ll-luxury-living.herokuapp.com/admin/service", {
+    // fetch("https://luxury-living-ll-server.onrender.com/admin/service", {
     //   method: "POST",
     //   body: formData,
     // })
@@ -49,7 +49,7 @@ const AddService = () => {
     const service = { name, description, avatar, price: 499 };
     // console.log(service);
     const { data } = await axios.post(
-      "https://ll-luxury-living.herokuapp.com/admin/servicing",
+      "https://luxury-living-ll-server.onrender.com/admin/servicing",
       service
     );
     if (data?.acknowledged) {

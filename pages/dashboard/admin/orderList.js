@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 const OrderList = () => {
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data: booking } = useSWR(
-    "https://ll-luxury-living.herokuapp.com/customer/booking",
+    "https://luxury-living-ll-server.onrender.com/customer/booking",
     fetcher,
     { revalidateOnFocus: true }
   );
@@ -16,7 +16,7 @@ const OrderList = () => {
   if (!booking) return <p>Loading...</p>;
 
   const handleStatus = async (id, status) => {
-    const { data } = await axios.put("https://ll-luxury-living.herokuapp.com/customer/booking", {
+    const { data } = await axios.put("https://luxury-living-ll-server.onrender.com/customer/booking", {
       id,
       status,
     });
